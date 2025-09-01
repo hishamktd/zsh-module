@@ -33,7 +33,7 @@ status() {
     
     echo "\n$(zmod_color blue '==== Branch and Remote Status ======')"
     git branch -v | while read line; do
-        if [[ "$line" =~ ^\* ]]; then
+        if [[ "$line" == *"* "* ]]; then
             echo "$line" | sed "s/^\* /$(zmod_color yellow '* ')/"
         elif [[ "$line" =~ origin/ ]]; then
             echo "$line" | sed "s/origin\//$(zmod_color purple 'origin\/')/"
@@ -132,7 +132,7 @@ branch() {
         local i=1
         echo "$branches" | while IFS= read -r line; do
             local branch_name=$(echo "$line" | sed 's/^[* ]*//')
-            if [[ "$line" =~ ^\* ]]; then
+            if [[ "$line" == *"* "* ]]; then
                 echo "$(zmod_color green "$i. $branch_name")"
             else
                 echo "$(zmod_color white "$i. $branch_name")"
