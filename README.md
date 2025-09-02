@@ -90,15 +90,21 @@ Enhanced git workflow with configurable default branch:
 ### Development Module  
 Development workflow automation with smart project detection:
 - `dev [dir]` - Smart development server launcher (auto-detects project type)
+- `script` - Interactive script management (list/run npm scripts, cargo commands, etc.)
 - `serve [port] [dir]` - Start development server with port specification
 - `install [packages]` - Smart package manager detection (bun/pnpm/yarn/npm)
 - `build [--prod]` - Universal build command
 - `test [args]` - Universal test runner with watch mode
 - `lint [--fix]` - Auto-format and lint code
-- `init [type] [name]` - Initialize new projects (node/rust/python/react/nextjs)
+- `init [type] [name]` - Initialize new projects (node/rust/python/go)
 - `status` - Development environment status and project info
 - `port [num|kill|list]` - Port management utilities
-- `env [set|load]` - Environment variable management
+- `env [show|activate]` - Environment variable management
+
+**Script Management:**
+- Interactive fzf selection of available scripts
+- Support for npm/yarn/pnpm/bun scripts, cargo commands, Makefile targets
+- Preview of actual commands before execution
 
 **Short aliases:** `s` (serve), `i` (install), `b` (build), `t` (test), `l` (lint), `st` (status)
 

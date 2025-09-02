@@ -101,6 +101,30 @@ lint --fix    # Auto-fix issues
 
 ## Project Initialization
 
+### `script`
+**Interactive script management**
+
+List and run available scripts based on project type with intelligent detection.
+
+**Usage:**
+```bash
+script              # Interactive script selection with fzf (if available)
+script list         # List all available scripts
+script run name     # Run specific script by name
+```
+
+**Supported Project Types:**
+- **Node.js** - npm/yarn/pnpm/bun scripts from package.json
+- **Rust** - cargo commands, examples, and binaries
+- **Python** - Poetry scripts, Django management commands
+- **Make** - Makefile targets
+
+**Features:**
+- 🎯 Interactive selection with fzf preview
+- 📋 Comprehensive script detection
+- 🚀 Smart package manager detection
+- 💡 Script previews showing actual commands
+
 ### `init [project-type] [name]`
 **Initialize new project**
 
@@ -118,8 +142,7 @@ init python my-script   # Create Python project
 - `node` - Node.js with package.json
 - `rust` - Rust with Cargo.toml
 - `python` - Python with basic structure
-- `react` - React application
-- `nextjs` - Next.js application
+- `go` - Go with go.mod
 
 ## Utility Functions
 
@@ -205,6 +228,20 @@ The module uses the following files to detect project types:
 4. **Python**: `app.py` or `main.py` presence
 5. **General Python**: `requirements.txt` or `pyproject.toml`
 
+## Module Structure
+
+The dev module is organized into focused files:
+
+- `server.zsh` - Development server commands (`dev`, `serve`)
+- `package.zsh` - Package management (`install`)
+- `build.zsh` - Build system commands (`build`)
+- `test.zsh` - Testing commands (`test`)
+- `lint.zsh` - Linting and formatting (`lint`)
+- `scripts.zsh` - Script management (`script`)
+- `init.zsh` - Project initialization (`init`)
+- `status.zsh` - Project status (`status`)
+- `utils.zsh` - Utilities (`port`, `env`)
+
 ## Configuration
 
 The dev module respects standard configuration files:
@@ -212,3 +249,18 @@ The dev module respects standard configuration files:
 - `rust-toolchain` for Rust version
 - `.python-version` for Python version
 - Project-specific configs (package.json scripts, etc.)
+
+## Examples
+
+```bash
+# Interactive script management
+script                  # Show fzf selection of all available scripts
+script list            # List all scripts in current project
+script run build       # Run specific script
+
+# Quick development workflow
+dev                    # Smart dev server start
+script                 # Pick and run any available script
+port list             # Check active ports
+status                # Check project status
+```
