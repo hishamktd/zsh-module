@@ -5,6 +5,30 @@ All notable changes to the ZSH Module Framework will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-09-02
+
+### Added
+- **Git Module**: Enhanced `stash-list` command with color separation in preview
+  - Added `--color=always` and `--ansi` flags for proper diff coloring in fzf preview
+- **Git Module**: Enhanced `differ` command with interactive file selection
+  - Added fzf-based file selection with colored diff preview
+  - Interactive file browsing with ESC to cancel cleanly
+  - Shows differences between current branch and specified branch (or default)
+
+### Fixed
+- **Core Framework**: Fixed `zmod list`/`zmod ls` commands failing with "read-only variable: status"
+  - Renamed conflicting `status` variable to `module_status` to avoid zsh built-in conflicts
+- **Core Framework**: Fixed `zmod disable` command failing with "bad output format specification"
+  - Corrected malformed sed character class `[[\.*^$()+?{|]` to `[[.*^$()+?{|]` in regex escaping
+- **Git Module**: Fixed `differ` command fallback behavior
+  - ESC now properly cancels without showing full diff output
+  - Improved user experience with clean exit on cancellation
+
+### Enhanced
+- **Git Module**: Improved consistency across interactive commands
+  - Both `stash-list` and `differ` now use consistent fzf patterns with colored previews
+  - Better error handling and user feedback across git commands
+
 ## [1.0.1] - 2025-09-01
 
 ### Fixed
