@@ -51,9 +51,10 @@ stash-list() {
     if zmod_has_command fzf; then
         local selected=$(echo "$stashes" | fzf \
             --prompt="Select stash (ESC to cancel): " \
-            --preview="git stash show -p \$(echo {} | cut -d: -f1)" \
+            --preview="git stash show -p --color=always \$(echo {} | cut -d: -f1)" \
             --preview-window="right:60%:wrap" \
-            --bind="ctrl-c:abort,esc:abort")
+            --bind="ctrl-c:abort,esc:abort" \
+            --ansi)
         
         if [[ -n "$selected" ]]; then
             local stash_id=$(echo "$selected" | cut -d: -f1)
