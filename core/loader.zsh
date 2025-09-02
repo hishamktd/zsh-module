@@ -168,7 +168,7 @@ zmod_is_enabled() {
     local module="$1"
     if [[ -f "$ZSH_MODULE_CONFIG" ]]; then
         grep -Fxq "$module" "$ZSH_MODULE_CONFIG" 2>/dev/null || \
-        grep -q "^[[:space:]]*$(printf '%s\n' "$module" | sed 's/[[\.*^$()+?{|]/\\&/g')[[:space:]]*$" "$ZSH_MODULE_CONFIG" 2>/dev/null
+        grep -q "^[[:space:]]*$(printf '%s\n' "$module" | sed 's/[[.*^$()+?{|]/\\&/g')[[:space:]]*$" "$ZSH_MODULE_CONFIG" 2>/dev/null
     else
         return 1
     fi
@@ -231,11 +231,11 @@ zmod_list() {
     for module_dir in "$ZSH_MODULE_DIR/modules"/*; do
         if [[ -d "$module_dir" ]]; then
             local module_name=$(basename "$module_dir")
-            local status="❌"
+            local module_status="❌"
             if zmod_is_enabled "$module_name"; then
-                status="✅"
+                module_status="✅"
             fi
-            echo "  $status $module_name"
+            echo "  $module_status $module_name"
         fi
     done
 }

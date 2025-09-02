@@ -1,6 +1,12 @@
 Script started on 2025-09-02 17:04:05+05:30 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="59" LINES="46"]
 manpath: can't set the locale; make sure $LC_* and $LANG are correct
-[6 q[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+[6 q[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [K[?1h=[?2004h
+
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+
 ]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
   Directory: /home/kiebot/projects/pers/zsh-module
 📦 Building eager loading cache...
@@ -25,11 +31,19 @@ manpath: can't set the locale; make sure $LC_* and $LANG are correct
   - Restart your shell or run 'zmod reload'
   - Use 'zmod status' to verify everything is working
   - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hzz[90mmod reload[39m[10Dz[39mm[39mo[39md[39m [39mr[39me[39ml[39mo[39ma[39md[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hzz[90mmod reload[39m[10Dz[39mm[39mo[39md[39m [39mr[39me[39ml[39mo[39ma[39md[?1l>[?2004l
+
 ]2;zmod reload]1;zmod🔄 Reloading modules...
 ✅ Module cache built: /home/kiebot/projects/pers/zsh-module/dist/modules.zsh
 ✅ Modules reloaded
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+
 ]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
   Directory: /home/kiebot/projects/pers/zsh-module
 📦 Building eager loading cache...
@@ -54,8 +68,16 @@ manpath: can't set the locale; make sure $LC_* and $LANG are correct
   - Restart your shell or run 'zmod reload'
   - Use 'zmod status' to verify everything is working
   - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hccl[90ms[39m[39ms[?1l>[?2004l
-]2;clear]1;cls[H[2J[3J[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hclsscriptcd ../api[9Dcls      scriptzmod update [90me[39m [39m [90mte[39m [39m [39m [90mate[39m [39m [39m [39m [90mdate[39m [39m [39m [39m [39m [90mpdate[39m [39m [39m [39m [39m [39m [90mupdate[39m[39m [39m [39m [39m [39m [39m [90m update[39m [39m [39m [39m [39m [39m [39m [39m [8D[90md update[39m[8D [39m [39m [39m [39m [39m [39m [39m [39m [9D[90mod update[39m[9Dz [39m [39m [39m [39m [39m [39m [39m [39m [39m [10Dz[90mmod update[39m[10D [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [11D..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hccl[90ms[39m[39ms[?1l>[?2004l
+
+]2;clear]1;cls[H[2J[3J[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hclsscriptcd ../api[9Dcls      scriptzmod update [90me[39m [39m [90mte[39m [39m [39m [90mate[39m [39m [39m [39m [90mdate[39m [39m [39m [39m [39m [90mpdate[39m [39m [39m [39m [39m [39m [90mupdate[39m[39m [39m [39m [39m [39m [39m [90m update[39m [39m [39m [39m [39m [39m [39m [39m [8D[90md update[39m[8D [39m [39m [39m [39m [39m [39m [39m [39m [9D[90mod update[39m[9Dz [39m [39m [39m [39m [39m [39m [39m [39m [39m [10Dz[90mmod update[39m[10D [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [11D..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+
 ]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
   Directory: /home/kiebot/projects/pers/zsh-module
 📦 Building eager loading cache...
@@ -80,11 +102,27 @@ manpath: can't set the locale; make sure $LC_* and $LANG are correct
   - Restart your shell or run 'zmod reload'
   - Use 'zmod status' to verify everything is working
   - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hcc[90md ../ui[39mc[39m [39m [39m [39m [39m [39m [39m [?1l>[?2004l
-]2;clear]1;c[H[2J[3J[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hyy can see check wherc[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hcc[90md ../ui[39mc[39m [39m [39m [39m [39m [39m [39m [?1l>[?2004l
+
+]2;clear]1;c[H[2J[3J[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hyy can see check wherc[?1l>[?2004l
+
 ]2;y can see check wherc]1;yzsh: command not found: y
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;31m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hc[?1l>[?2004l
-]2;clear]1;c[H[2J[3J[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hcy can see check wherc[21Dc                    [20Dscript [90mt[39m [39m [90mpt[39m [39m [39m [90mipt[39m [39m [39m [39m [90mript[39ms [39m [39m [39m [39m s[90mcript[39m [39m [39m [39m [39m [39m ..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;31m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hc[?1l>[?2004l
+
+]2;clear]1;c[H[2J[3J[1m[7m%[27m[1m[0m                                                          
+ 
+]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\
+[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hcy can see check wherc[21Dc                    [20Dscript [90mt[39m [39m [90mpt[39m [39m [39m [90mipt[39m [39m [39m [39m [90mript[39ms [39m [39m [39m [39m s[90mcript[39m [39m [39m [39m [39m [39m ..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
+
 ]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
   Directory: /home/kiebot/projects/pers/zsh-module
 📦 Building eager loading cache...
@@ -94,113 +132,4 @@ manpath: can't set the locale; make sure $LC_* and $LANG are correct
   Adding module: network
 ✅ Eager cache built with 4 modules
 ⚡ Building lazy loading registry...
-  Registering lazy commands for: git
-  Registering lazy commands for: dev
-  Registering lazy commands for: system
-  Registering lazy commands for: network
-✅ Lazy registry built with 81 commands
-
-📊 Build Summary:
-  Eager cache: 4 modules
-  Lazy cache: 81 commands
-⏱️  Build completed in 0s
-
-💡 Next steps:
-  - Restart your shell or run 'zmod reload'
-  - Use 'zmod status' to verify everything is working
-  - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
-]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
-  Directory: /home/kiebot/projects/pers/zsh-module
-📦 Building eager loading cache...
-  Adding module: git
-  Adding module: dev
-  Adding module: system
-  Adding module: network
-✅ Eager cache built with 4 modules
-⚡ Building lazy loading registry...
-  Registering lazy commands for: git
-  Registering lazy commands for: dev
-  Registering lazy commands for: system
-  Registering lazy commands for: network
-✅ Lazy registry built with 81 commands
-
-📊 Build Summary:
-  Eager cache: 4 modules
-  Lazy cache: 81 commands
-⏱️  Build completed in 0s
-
-💡 Next steps:
-  - Restart your shell or run 'zmod reload'
-  - Use 'zmod status' to verify everything is working
-  - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h//[90musr/share/doc/fzf/examples/key-[90mb[90mindings.zsh[39m[K[A[16C/[39mc[K[1B[K[A[29C/ /[90musr/share/doc/fzf/examples/key-[90mb[90mindings.zsh[39m[K[A[16C[K[1B[K[A[27Cc[?1l>[?2004l[1B]2;clear]1;c[H[2J[3J[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m)[00m [Kaa[90mpply[39ma[39md[39m [39m [39m d  a a[90mpply[39m [39m [39m [39m [39m cstash-list[10Dcls        [90ms[39mc [39m  ..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
-]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
-  Directory: /home/kiebot/projects/pers/zsh-module
-📦 Building eager loading cache...
-  Adding module: git
-  Adding module: dev
-  Adding module: system
-  Adding module: network
-✅ Eager cache built with 4 modules
-⚡ Building lazy loading registry...
-  Registering lazy commands for: git
-  Registering lazy commands for: dev
-  Registering lazy commands for: system
-  Registering lazy commands for: network
-✅ Lazy registry built with 81 commands
-
-📊 Build Summary:
-  Eager cache: 4 modules
-  Lazy cache: 81 commands
-⏱️  Build completed in 0s
-
-💡 Next steps:
-  - Restart your shell or run 'zmod reload'
-  - Use 'zmod status' to verify everything is working
-  - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m)[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Kc[?1l>[?2004l
-]2;clear]1;c[H[2J[3J[1m[7m%[27m[1m[0m                                                           ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m ss[90mtash-list[39m[9Ds[39ms[39m [39m [39m [39m [39m [39m [39m [39m [8Ds s[90mtash-list[39m[9D [39m [39m [39m [39m [39m [39m [39m [39m [39m [10Dff[90m cls[39mf[39m [39md[39m [39m iffer[?1l>[?2004l
-]2;f differ]1;ff:13: command not found: find
-[1m[7m%[27m[1m[0m                                                                          ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;31m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hff[90m differ[39mf[39mi[39m [39m [39m [39m [39m [39m nd f differ[?1l>[?2004l
-]2;find differ]1;findfind: 'differ': No such file or directory
-[1m[7m%[27m[1m[0m                                                                          ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;31m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004h..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
-]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
-  Directory: /home/kiebot/projects/pers/zsh-module
-📦 Building eager loading cache...
-  Adding module: git
-  Adding module: dev
-  Adding module: system
-  Adding module: network
-✅ Eager cache built with 4 modules
-⚡ Building lazy loading registry...
-  Registering lazy commands for: git
-  Registering lazy commands for: dev
-  Registering lazy commands for: system
-  Registering lazy commands for: network
-✅ Lazy registry built with 81 commands
-
-📊 Build Summary:
-  Eager cache: 4 modules
-  Lazy cache: 81 commands
-⏱️  Build completed in 0s
-
-💡 Next steps:
-  - Restart your shell or run 'zmod reload'
-  - Use 'zmod status' to verify everything is working
-  - Use 'zmod config set lazy_load true/false' to switch loading modes
-[1m[7m%[27m[1m[0m                                                                          ]2;kiebot@kiebot:~/projects/pers/zsh-module]1;..rs/zsh-module]7;file://kiebot/home/kiebot/projects/pers/zsh-module\[0m[27m[24m[J[01;32m➜  [36mzsh-module[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h=[?2004hhh[90mttpstatus[39m[9Dh[39mo[39m [39m [39m [39m [39m [39m [39m [39m [8Dw  h h[90mttpstatus[39m[9D [39m [39m [39m [39m [39m [39m [39m [39m [39m [10D..[90m/scripts/build.zsh[39m[18D.[39m/[39ms[39mc[39mr[39mi[39mp[39mt[39ms[39m/[39mb[39mu[39mi[39ml[39md[39m.[39mz[39ms[39mh[?1l>[?2004l
-]2;./scripts/build.zsh]1;./scripts/build.zsh🔨 Building ZSH Module Framework...
-  Directory: /home/kiebot/projects/pers/zsh-module
-📦 Building eager loading cache...
-  Adding module: git
-  Adding module: dev
-  Adding module: system
-  Adding module: network
-✅ Eager cache built with 4 modules
-⚡ Building lazy loading registry...
-  Registering lazy commands for: git
-  Registering lazy commands for: dev
-  Registering lazy commands for: system
-  Registering lazy commands for: network
-�
+  Registeri
