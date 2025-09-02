@@ -16,25 +16,27 @@ stash() {
     fi
 }
 
-# Basic apply command
+# Basic apply command - accepts stash ID or defaults to latest
 apply() {
     if ! zmod_is_git_repo; then
         echo "❌ Not a git repository"
         return 1
     fi
     
-    local stash_ref="${1:-stash@{0}}"
-    git stash apply "$stash_ref"
-}
-
-# Git stash with message
-gstash() {
-    local message="${1:-WIP: $(date)}"
-    git stash push -m "$message"
+    local stash_id="$1"
+    if [[ -z "$stash_id" ]]; then
+        # Default to most recent stash
+        stash_id="stash@{0}"
+    elif [[ "$stash_id" =~ ^[0-9]+$ ]]; then
+        # If just a number, convert to stash@{N} format
+        stash_id="stash@{$stash_id}"
+    fi
+    
+    git stash apply "$stash_id"
 }
 
 # Interactive stash manager
-gstash-list() {
+stash-list() {
     if ! zmod_is_git_repo; then
         echo "❌ Not a git repository"
         return 1
@@ -47,19 +49,47 @@ gstash-list() {
     fi
     
     if zmod_has_command fzf; then
-        local selected=$(echo "$stashes" | fzf --prompt="Select stash: " --preview="git stash show -p {1}")
+        local selected=$(echo "$stashes" | fzf \
+            --prompt="Select stash (ESC to cancel): " \
+            --preview="git stash show -p \$(echo {} | cut -d: -f1)" \
+            --preview-window="right:60%:wrap" \
+            --bind="ctrl-c:abort,esc:abort")
+        
         if [[ -n "$selected" ]]; then
             local stash_id=$(echo "$selected" | cut -d: -f1)
             echo "Selected: $selected"
-            echo -n "Action [a]pply [p]op [d]rop [s]how: "
-            read action
+            echo -n "Action [a]pply [p]op [d]rop [s]how [c]ancel: "
+            read -k 1 action
+            echo  # Add newline after single character input
+            
             case "$action" in
-                a) git stash apply "$stash_id" ;;
-                p) git stash pop "$stash_id" ;;
-                d) git stash drop "$stash_id" ;;
-                s) git stash show -p "$stash_id" ;;
-                *) echo "❌ Invalid action" ;;
+                a|A) 
+                    echo "Applying stash $stash_id..."
+                    git stash apply "$stash_id" 
+                    ;;
+                p|P) 
+                    echo "Popping stash $stash_id..."
+                    git stash pop "$stash_id" 
+                    ;;
+                d|D) 
+                    echo "Dropping stash $stash_id..."
+                    git stash drop "$stash_id" 
+                    ;;
+                s|S) 
+                    git stash show -p "$stash_id" 
+                    ;;
+                c|C) 
+                    echo "Cancelled"
+                    return 0
+                    ;;
+                *) 
+                    echo "❌ Invalid action. Cancelled."
+                    return 1
+                    ;;
             esac
+        else
+            echo "No stash selected. Cancelled."
+            return 0
         fi
     else
         echo "$stashes"
