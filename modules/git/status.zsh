@@ -42,13 +42,13 @@ status() {
     done
     
     # Ahead/Behind count
-    local ahead_behind=$(git rev-list --left-right --count main...HEAD 2>/dev/null)
+    local ahead_behind=$(git rev-list --left-right --count $ZSH_MODULE_DEFAULT_BRANCH...HEAD 2>/dev/null)
     if [[ -n "$ahead_behind" ]]; then
         local behind=$(echo $ahead_behind | cut -f1)
         local ahead=$(echo $ahead_behind | cut -f2)
-        echo "$(zmod_color blue "Current branch is ahead by $ahead commits and behind by $behind commits relative to 'main'.")"
+        echo "$(zmod_color blue "Current branch is ahead by $ahead commits and behind by $behind commits relative to '$ZSH_MODULE_DEFAULT_BRANCH'.")"
     else
-        echo "$(zmod_color blue "Could not determine ahead/behind status. Ensure 'main' exists in your repository.")"
+        echo "$(zmod_color blue "Could not determine ahead/behind status. Ensure '$ZSH_MODULE_DEFAULT_BRANCH' exists in your repository.")"
     fi
 }
 

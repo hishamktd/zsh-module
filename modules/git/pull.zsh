@@ -3,7 +3,7 @@
 
 # Main pull function (matches PowerShell pull.ps1)
 pull() {
-    local branch="${1:-main}"
+    local branch="${1:-$ZSH_MODULE_DEFAULT_BRANCH}"
     
     if ! zmod_is_git_repo; then
         echo "❌ Not a git repository"

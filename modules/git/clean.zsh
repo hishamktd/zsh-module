@@ -7,7 +7,7 @@ git_clean_branches() {
         return 1
     fi
     
-    local main_branch="main"
+    local main_branch="$ZSH_MODULE_DEFAULT_BRANCH"
     if ! git show-ref --verify --quiet "refs/heads/$main_branch"; then
         main_branch="master"
     fi

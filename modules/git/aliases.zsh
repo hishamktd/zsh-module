@@ -8,6 +8,6 @@ alias gblame='blame'
 
 # Git differ function (matches PowerShell script)
 function differ() {
-    local branch="${1:-main}"
+    local branch="${1:-$ZSH_MODULE_DEFAULT_BRANCH}"
     git diff "$branch"
 }

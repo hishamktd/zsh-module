@@ -5,6 +5,7 @@
 export ZSH_MODULE_LAZY_LOAD=${ZSH_MODULE_LAZY_LOAD:-true}
 export ZSH_MODULE_DEBUG=${ZSH_MODULE_DEBUG:-false}
 export ZSH_MODULE_AUTO_UPDATE=${ZSH_MODULE_AUTO_UPDATE:-true}
+export ZSH_MODULE_DEFAULT_BRANCH=${ZSH_MODULE_DEFAULT_BRANCH:-main}
 
 # Lazy loading registry
 typeset -gA ZSH_MODULE_LAZY_COMMANDS
@@ -105,6 +106,9 @@ export ZSH_MODULE_DEBUG=$ZSH_MODULE_DEBUG
 
 # Enable/disable auto updates
 export ZSH_MODULE_AUTO_UPDATE=$ZSH_MODULE_AUTO_UPDATE
+
+# Default git branch
+export ZSH_MODULE_DEFAULT_BRANCH=$ZSH_MODULE_DEFAULT_BRANCH
 EOF
     
     echo "✅ Configuration saved to $config_file"
@@ -125,9 +129,12 @@ zmod_config_set() {
         "auto_update"|"auto-update")
             export ZSH_MODULE_AUTO_UPDATE="$value"
             ;;
+        "default_branch"|"default-branch")
+            export ZSH_MODULE_DEFAULT_BRANCH="$value"
+            ;;
         *)
             echo "❌ Unknown configuration key: $key" >&2
-            echo "Available keys: lazy_load, debug, auto_update" >&2
+            echo "Available keys: lazy_load, debug, auto_update, default_branch" >&2
             return 1
             ;;
     esac
@@ -150,6 +157,9 @@ zmod_config_get() {
         "auto_update"|"auto-update")
             echo "$ZSH_MODULE_AUTO_UPDATE"
             ;;
+        "default_branch"|"default-branch")
+            echo "$ZSH_MODULE_DEFAULT_BRANCH"
+            ;;
         *)
             echo "❌ Unknown configuration key: $key" >&2
             return 1
@@ -160,8 +170,9 @@ zmod_config_get() {
 # Show all configuration
 zmod_config_show() {
     echo "ZSH Module Framework Configuration:"
-    echo "  Lazy Load:   $(zmod_config_get lazy_load)"
-    echo "  Debug:       $(zmod_config_get debug)"
-    echo "  Auto Update: $(zmod_config_get auto_update)"
-    echo "  Module Dir:  $ZSH_MODULE_DIR"
+    echo "  Lazy Load:      $(zmod_config_get lazy_load)"
+    echo "  Debug:          $(zmod_config_get debug)"
+    echo "  Auto Update:    $(zmod_config_get auto_update)"
+    echo "  Default Branch: $(zmod_config_get default_branch)"
+    echo "  Module Dir:     $ZSH_MODULE_DIR"
 }

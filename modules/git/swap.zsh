@@ -12,9 +12,9 @@ swap() {
     
     # If no branch name provided, default to main branch
     if [[ -z "$branch_name" ]]; then
-        # Try to find main branch in order of preference: main, master, develop, dev
-        if git show-ref --verify --quiet "refs/heads/main"; then
-            branch_name="main"
+        # Try to find main branch starting with configured default, then fallbacks
+        if git show-ref --verify --quiet "refs/heads/$ZSH_MODULE_DEFAULT_BRANCH"; then
+            branch_name="$ZSH_MODULE_DEFAULT_BRANCH"
         elif git show-ref --verify --quiet "refs/heads/master"; then
             branch_name="master"
         elif git show-ref --verify --quiet "refs/heads/develop"; then
