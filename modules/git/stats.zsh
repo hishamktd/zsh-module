@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # Show git repository statistics
 
-gstats() {
+stats() {
     if ! zmod_is_git_repo; then
         echo "❌ Not a git repository"
         return 1
