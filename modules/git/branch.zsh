@@ -8,11 +8,11 @@ branch() {
     # Parse arguments
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            -ls|--list)
+            "-ls"|"--list")
                 ls_flag="true"
                 shift
                 ;;
-            -r|--remote)
+            "-r"|"--remote")
                 remote_flag="true"
                 shift
                 ;;

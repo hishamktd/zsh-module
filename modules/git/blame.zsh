@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 # Git blame with better formatting
 
-gblame() {
+blame() {
     if [[ -z "$1" ]]; then
         echo "❌ File path required"
-        echo "Usage: gblame file.txt"
+        echo "Usage: blame file.txt"
         return 1
     fi
     

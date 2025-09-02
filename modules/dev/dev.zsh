@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 # Development Module - Development workflow commands
 
+# Clear any existing aliases to avoid conflicts
+unalias s i b t l st serve install build test lint 2>/dev/null || true
+
 # Development server shortcuts
 serve() {
     local port="${1:-3000}"

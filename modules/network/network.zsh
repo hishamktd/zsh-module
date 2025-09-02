@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 # Network Module - Network utilities and tools
 
+# Clear any existing aliases to avoid conflicts
+unalias p dl serve ping download httpserver nslookup whois 2>/dev/null || true
+
 # Enhanced ping with better output
 ping() {
     local host="$1"

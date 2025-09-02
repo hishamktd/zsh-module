@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 # System Module - System utilities and shortcuts
 
+# Clear any existing aliases to avoid conflicts
+unalias ls ll la l g f p dl serve c h grep df du free 2>/dev/null || true
+
 # Enhanced ls with better defaults
 ll() {
     if zmod_has_command exa; then
@@ -8,7 +11,7 @@ ll() {
     elif zmod_has_command lsd; then
         lsd -la
     else
-        ls -la --color=auto "$@"
+        command ls -la --color=auto "$@"
     fi
 }
 
@@ -18,7 +21,7 @@ la() {
     elif zmod_has_command lsd; then
         lsd -a
     else
-        ls -a --color=auto "$@"
+        command ls -a --color=auto "$@"
     fi
 }
 
@@ -313,3 +316,4 @@ alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h'
 alias free='free -h'
+alias cls='clear'

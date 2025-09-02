@@ -157,7 +157,19 @@ zmod_update() {
     fi
     
     echo "✅ Framework updated"
-    echo "💡 Restart your shell or run 'zmod reload' to apply changes"
+    echo "🔄 Reloading shell configuration..."
+    
+    # Clear any conflicting aliases before reloading
+    unalias ls 2>/dev/null || true
+    
+    # Reload the shell configuration
+    if [[ -n "$ZSH_VERSION" ]]; then
+        exec zsh
+    elif [[ -n "$BASH_VERSION" ]]; then
+        exec bash
+    else
+        echo "💡 Please restart your shell or run 'source ~/.zshrc' to apply changes"
+    fi
 }
 
 # Create new module
