@@ -4,6 +4,54 @@
 # Clear any existing aliases to avoid conflicts
 unalias s i b t l st serve install build test lint 2>/dev/null || true
 
+# Smart development command - detects project type and runs appropriate dev server
+dev() {
+    local dir="${1:-.}"
+    
+    if [[ -f "$dir/package.json" ]]; then
+        # Check if dev script exists in package.json
+        if ! grep -q '"dev"' "$dir/package.json"; then
+            echo "❌ No dev script found in package.json"
+            return 1
+        fi
+        
+        # Try package managers in order of preference
+        if zmod_has_command bun; then
+            echo "⚡ Starting bun dev server..."
+            bun dev
+        elif zmod_has_command pnpm; then
+            echo "📦 Starting pnpm dev server..."
+            pnpm dev
+        elif zmod_has_command yarn; then
+            echo "🧶 Starting yarn dev server..."
+            yarn dev
+        elif zmod_has_command npm; then
+            echo "🚀 Starting npm dev server..."
+            npm run dev
+        else
+            echo "❌ No package manager found (npm, yarn, pnpm, bun)"
+            return 1
+        fi
+    elif [[ -f "$dir/Cargo.toml" ]]; then
+        echo "🦀 Starting Rust development..."
+        cargo run
+    elif [[ -f "$dir/manage.py" ]]; then
+        echo "🐍 Starting Django dev server..."
+        python manage.py runserver
+    elif [[ -f "$dir/app.py" ]] || [[ -f "$dir/main.py" ]]; then
+        echo "🐍 Starting Python dev server..."
+        if [[ -f "$dir/app.py" ]]; then
+            python app.py
+        else
+            python main.py
+        fi
+    else
+        echo "❌ No recognized development project found"
+        echo "Supported: package.json (Node), Cargo.toml (Rust), manage.py (Django), app.py/main.py (Python)"
+        return 1
+    fi
+}
+
 # Development server shortcuts
 serve() {
     local port="${1:-3000}"

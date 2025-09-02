@@ -50,12 +50,16 @@ zmod info git               # Show module information
 zmod reload                 # Reload all modules
 ```
 
-### Configuration
+### Configuration Management
 ```bash
-zmod config show            # Show all configuration
-zmod config set lazy_load true    # Enable lazy loading
-zmod config set debug true        # Enable debug output
+zmod config show                          # Show all configuration
+zmod config set lazy_load true           # Enable lazy loading
+zmod config set debug true               # Enable debug output  
+zmod config set auto_update false        # Disable auto updates
+zmod config set default_branch develop   # Set default git branch
+zmod config get default_branch           # Get current default branch
 ```
+
 
 ### Performance
 ```bash
@@ -66,23 +70,37 @@ zmod config set lazy_load true    # Enable lazy loading for faster startup
 ## 📦 Available Modules
 
 ### Git Module
-Enhanced git workflow with intelligent commands:
-- `status` - Comprehensive git status with colors and context
+Enhanced git workflow with configurable default branch:
+- `status` - Comprehensive git status with colors and ahead/behind tracking
 - `commit [message]` - Smart commit with staging and validation
+- `pull [branch]` - Pull with rebase (defaults to configured branch)
+- `push` - Smart push with upstream handling
 - `branch [-ls] [-r]` - Branch management with clipboard integration
+- `swap [branch]` - Smart branch switching with fallback detection
 - `working [add|remove|list|switch]` - Working branch management
-- `gpu` - Smart push with upstream handling
-- `gpr` - Pull with rebase
-- `gclean` - Clean merged branches
+- `stash [message]` - Stash changes with optional message
+- `apply [id]` - Apply stash by ID or latest
+- `stash-list` - Interactive stash management with fzf
+- `gclean` - Clean merged branches (uses configured default branch)
+
+**Configuration:**
+- Set default branch: `zmod config set default_branch develop`
+- All git commands respect the configured default branch
 
 ### Development Module  
-Development workflow automation:
-- `serve [port]` - Auto-detect and start development server
-- `install [packages]` - Smart package manager detection
-- `build` - Universal build command
-- `test [args]` - Universal test runner
-- `lint` - Auto-format and lint code
-- `init [type]` - Initialize new projects
+Development workflow automation with smart project detection:
+- `dev [dir]` - Smart development server launcher (auto-detects project type)
+- `serve [port] [dir]` - Start development server with port specification
+- `install [packages]` - Smart package manager detection (bun/pnpm/yarn/npm)
+- `build [--prod]` - Universal build command
+- `test [args]` - Universal test runner with watch mode
+- `lint [--fix]` - Auto-format and lint code
+- `init [type] [name]` - Initialize new projects (node/rust/python/react/nextjs)
+- `status` - Development environment status and project info
+- `port [num|kill|list]` - Port management utilities
+- `env [set|load]` - Environment variable management
+
+**Short aliases:** `s` (serve), `i` (install), `b` (build), `t` (test), `l` (lint), `st` (status)
 
 ### System Module
 System utilities and shortcuts:
