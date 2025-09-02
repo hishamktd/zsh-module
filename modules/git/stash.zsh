@@ -1,6 +1,32 @@
 #!/usr/bin/env zsh
 # Git stash commands
 
+# Basic stash command
+stash() {
+    if ! zmod_is_git_repo; then
+        echo "❌ Not a git repository"
+        return 1
+    fi
+    
+    local message="${1:-WIP: $(date)}"
+    if [[ -n "$1" ]]; then
+        git stash push -m "$message"
+    else
+        git stash push -m "$message"
+    fi
+}
+
+# Basic apply command
+apply() {
+    if ! zmod_is_git_repo; then
+        echo "❌ Not a git repository"
+        return 1
+    fi
+    
+    local stash_ref="${1:-stash@{0}}"
+    git stash apply "$stash_ref"
+}
+
 # Git stash with message
 gstash() {
     local message="${1:-WIP: $(date)}"
