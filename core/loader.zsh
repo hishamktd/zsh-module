@@ -72,8 +72,8 @@ zmod_build_lazy_registry() {
         [[ -z "${module// }" ]] && continue
         
         module=$(echo "$module" | xargs) # trim whitespace
-        local module_path="$ZSH_MODULE_DIR/modules/$module"
-        local lazy_config="$module_path/lazy.conf"
+        local current_module_path="$ZSH_MODULE_DIR/modules/$module"
+        local lazy_config="$current_module_path/lazy.conf"
         
         if [[ -f "$lazy_config" ]]; then
             echo "# Lazy commands for module: $module" >> "$lazy_cache"

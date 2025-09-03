@@ -6,6 +6,7 @@ export ZSH_MODULE_LAZY_LOAD=${ZSH_MODULE_LAZY_LOAD:-true}
 export ZSH_MODULE_DEBUG=${ZSH_MODULE_DEBUG:-false}
 export ZSH_MODULE_AUTO_UPDATE=${ZSH_MODULE_AUTO_UPDATE:-true}
 export ZSH_MODULE_DEFAULT_BRANCH=${ZSH_MODULE_DEFAULT_BRANCH:-main}
+export ZSH_MODULE_AI_PROVIDER=${ZSH_MODULE_AI_PROVIDER:-"openai"}
 
 # Lazy loading registry
 typeset -gA ZSH_MODULE_LAZY_COMMANDS
@@ -109,6 +110,9 @@ export ZSH_MODULE_AUTO_UPDATE=$ZSH_MODULE_AUTO_UPDATE
 
 # Default git branch
 export ZSH_MODULE_DEFAULT_BRANCH=$ZSH_MODULE_DEFAULT_BRANCH
+
+# Default AI provider
+export ZSH_MODULE_AI_PROVIDER=$ZSH_MODULE_AI_PROVIDER
 EOF
     
     echo "✅ Configuration saved to $config_file"
@@ -132,9 +136,12 @@ zmod_config_set() {
         "default_branch"|"default-branch")
             export ZSH_MODULE_DEFAULT_BRANCH="$value"
             ;;
+        "ai_provider"|"ai-provider")
+            export ZSH_MODULE_AI_PROVIDER="$value"
+            ;;
         *)
             echo "❌ Unknown configuration key: $key" >&2
-            echo "Available keys: lazy_load, debug, auto_update, default_branch" >&2
+            echo "Available keys: lazy_load, debug, auto_update, default_branch, ai_provider" >&2
             return 1
             ;;
     esac
@@ -160,6 +167,9 @@ zmod_config_get() {
         "default_branch"|"default-branch")
             echo "$ZSH_MODULE_DEFAULT_BRANCH"
             ;;
+        "ai_provider"|"ai-provider")
+            echo "$ZSH_MODULE_AI_PROVIDER"
+            ;;
         *)
             echo "❌ Unknown configuration key: $key" >&2
             return 1
@@ -174,5 +184,6 @@ zmod_config_show() {
     echo "  Debug:          $(zmod_config_get debug)"
     echo "  Auto Update:    $(zmod_config_get auto_update)"
     echo "  Default Branch: $(zmod_config_get default_branch)"
+    echo "  AI Provider:    $(zmod_config_get ai_provider)"
     echo "  Module Dir:     $ZSH_MODULE_DIR"
 }
