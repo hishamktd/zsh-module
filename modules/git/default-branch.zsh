@@ -137,8 +137,8 @@ zmod_list_default_branches() {
         return 0
     fi
     
-    local config_files=("$config_directory"/*.conf)
-    if [[ ! -f "${config_files[0]}" ]]; then
+    local config_files=($config_directory/*.conf)
+    if [[ ! -f "${config_files[1]}" ]]; then
         echo "$(zmod_color yellow 'No repository-specific configurations found.')"
         return 0
     fi
