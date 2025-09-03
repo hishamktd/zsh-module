@@ -1,6 +1,33 @@
 # AI Module Documentation
 
-The AI module provides configurable AI provider management with support for multiple AI services, secure API key storage, and interactive provider selection.
+The AI Module provides configurable AI provider management with support for multiple AI services including OpenAI, Claude, Gemini, and Ollama.
+
+## File Structure
+
+```
+modules/ai/
+├── ai.zsh              # Main module entry point
+├── providers/          # AI provider implementations
+│   ├── openai.zsh     # OpenAI API integration
+│   ├── claude.zsh     # Anthropic Claude API integration
+│   ├── gemini.zsh     # Google Gemini API integration
+│   └── ollama.zsh     # Ollama local model integration
+├── functions/          # Core functionality modules
+│   ├── config.zsh     # Configuration management
+│   ├── management.zsh # Provider management (list, select, configure)
+│   ├── chat.zsh       # General AI chat functionality
+│   └── commit.zsh     # Git commit message generation
+└── README.md          # This documentation
+```
+
+## Supported Providers
+
+| Provider | Description | Configuration Keys |
+|----------|-------------|-------------------|
+| **openai** | OpenAI GPT | `api_key`, `model`, `base_url` |
+| **claude** | Anthropic Claude | `api_key`, `model` |
+| **gemini** | Google Gemini | `api_key`, `model` |
+| **ollama** | Local Ollama | `base_url`, `model` |
 
 ## 🚀 Quick Start
 

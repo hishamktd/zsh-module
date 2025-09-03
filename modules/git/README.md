@@ -41,8 +41,36 @@ swap feature-123  # Switches to feature-123 branch
 ### `status`
 Enhanced git status with detailed information.
 
-### `commit [message]`
-Stages all changes and commits with message.
+### `commit [message] [flags]`
+**Enhanced with AI-powered commit message generation**
+
+Commits staged changes with optional AI-generated commit messages.
+
+**Usage:**
+```bash
+commit "Add new feature"           # Direct commit with message
+commit --ai                        # Generate commit message using AI
+commit --ai --edit                 # Generate AI message then edit in editor
+commit --edit                      # Edit message in editor
+commit -a -e "Initial message"     # Combine AI generation with editing
+```
+
+**Flags:**
+- `--ai`, `-a`: Generate commit message using configured AI provider
+- `--edit`, `-e`: Open editor to modify commit message
+- Standard git commit flags are also supported
+
+**Features:**
+- **AI Integration:** Uses the configured AI provider (OpenAI, Claude, Gemini, Ollama) 
+- **Smart Staging:** Only commits staged changes (no auto-staging)
+- **Conventional Commits:** AI generates conventional commit format
+- **Editor Support:** Uses VISUAL/EDITOR environment variables (fallback: nano)
+- **Error Handling:** Fallback to manual input if AI generation fails
+- **Change Preview:** Shows staged files before committing
+
+**Requirements:**
+- Configure AI provider: `ai config [provider]`
+- Stage changes first: `git add <files>`
 
 ### `push`
 Smart push with upstream tracking.
