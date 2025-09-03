@@ -15,7 +15,7 @@ ai_call_deepseek() {
     
     local api_key="${api_key}"
     local model="${model:-deepseek-chat}"
-    local base_url="${base_url:-https://api.deepseek.com/v1}"
+    local base_url="${base_url:-https://api.deepseek.com}"
     
     if [[ -z "$api_key" ]]; then
         echo "❌ DeepSeek API key not configured" >&2
