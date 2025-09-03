@@ -13,7 +13,7 @@ function differ() {
         return 1
     fi
     
-    local branch="${1:-$ZSH_MODULE_DEFAULT_BRANCH}"
+    local branch="${1:-$(zmod_get_default_branch)}"
     local changed_files=$(git diff --name-only "$branch")
     
     if [[ -z "$changed_files" ]]; then

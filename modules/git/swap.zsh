@@ -10,11 +10,16 @@ swap() {
         return 1
     fi
     
-    # If no branch name provided, default to main branch
+    # If no branch name provided, default to configured main branch
     if [[ -z "$branch_name" ]]; then
+        # Get the configured default branch for this repository
+        local default_branch=$(zmod_get_default_branch)
+        
         # Try to find main branch starting with configured default, then fallbacks
-        if git show-ref --verify --quiet "refs/heads/$ZSH_MODULE_DEFAULT_BRANCH"; then
-            branch_name="$ZSH_MODULE_DEFAULT_BRANCH"
+        if git show-ref --verify --quiet "refs/heads/$default_branch"; then
+            branch_name="$default_branch"
+        elif git show-ref --verify --quiet "refs/heads/main"; then
+            branch_name="main"
         elif git show-ref --verify --quiet "refs/heads/master"; then
             branch_name="master"
         elif git show-ref --verify --quiet "refs/heads/develop"; then
@@ -23,14 +28,15 @@ swap() {
             branch_name="dev"
         else
             # Get the default branch from remote origin
-            local default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | cut -d/ -f4)
-            if [[ -n "$default_branch" ]] && git show-ref --verify --quiet "refs/heads/$default_branch"; then
-                branch_name="$default_branch"
+            local remote_default=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | cut -d/ -f4)
+            if [[ -n "$remote_default" ]] && git show-ref --verify --quiet "refs/heads/$remote_default"; then
+                branch_name="$remote_default"
             else
-                echo "❌ No main branch found (main/master/develop/dev)"
+                echo "❌ No main branch found ($default_branch/main/master/develop/dev)"
                 echo "Available branches:"
                 git branch --format="  %(refname:short)" | head -5
                 echo "Usage: swap [branch-name]"
+                echo "Tip: Set default branch with 'default_branch set <branch-name>'"
                 return 1
             fi
         fi
