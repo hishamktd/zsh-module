@@ -20,7 +20,7 @@ copy_to_clipboard() {
         return 0
     elif command -v wl-copy >/dev/null; then
         # Wayland
-        echo -n "$text" | wl-copy
+        echo -n "$text" | timeout 3s wl-copy 2>/dev/null
         return 0
     else
         # No clipboard utility found
