@@ -16,7 +16,6 @@ AI_PROVIDERS=(
     "azure" "Azure OpenAI"
     "huggingface" "Hugging Face"
     "cohere" "Cohere"
-    "palm" "Google PaLM"
     "grok" "xAI Grok"
     "deepseek" "DeepSeek AI"
 )
@@ -31,7 +30,6 @@ AI_CONFIG_KEYS=(
     "azure" "api_key,endpoint,deployment,api_version"
     "huggingface" "api_key,model"
     "cohere" "api_key,model"
-    "palm" "api_key,model"
     "grok" "api_key,model,base_url"
     "deepseek" "api_key,model,base_url"
 )
