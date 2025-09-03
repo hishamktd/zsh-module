@@ -2,23 +2,30 @@
 # Commit - Enhanced with AI-generated commit messages
 
 commit() {
-    local message="$1"
-    local flags=("${@:2}")
+    local message=""
     local use_ai=false
     local edit_message=false
-    
-    # Parse flags
     local -a processed_flags
-    for flag in "${flags[@]}"; do
-        case "$flag" in
-            "--ai"|"-a")
+    
+    # Parse all arguments
+    for arg in "$@"; do
+        case "$arg" in
+            "--ai"|"-ai"|"-a")
                 use_ai=true
                 ;;
             "--edit"|"-e")
                 edit_message=true
                 ;;
+            -*)
+                processed_flags+=("$arg")
+                ;;
             *)
-                processed_flags+=("$flag")
+                # First non-flag argument is the commit message
+                if [[ -z "$message" ]]; then
+                    message="$arg"
+                else
+                    processed_flags+=("$arg")
+                fi
                 ;;
         esac
     done

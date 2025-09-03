@@ -3,6 +3,7 @@
 
 # Configuration variables
 export ZSH_MODULE_AI_PROVIDER=${ZSH_MODULE_AI_PROVIDER:-"openai"}
+export ZSH_MODULE_DIR=${ZSH_MODULE_DIR:-"${0:A:h:h:h}"}
 export ZSH_MODULE_AI_CONFIG_DIR="$ZSH_MODULE_DIR/config/ai"
 
 # Supported AI providers
