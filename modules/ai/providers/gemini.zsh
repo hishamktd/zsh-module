@@ -21,7 +21,7 @@ ai_call_gemini() {
         return 1
     fi
     
-    curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${api_key}" \
+    local response=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${api_key}" \
         -H "Content-Type: application/json" \
         -d "{
             \"contents\": [{
@@ -31,5 +31,23 @@ ai_call_gemini() {
                 \"maxOutputTokens\": 150,
                 \"temperature\": 0.7
             }
-        }" | jq -r '.candidates[0].content.parts[0].text' 2>/dev/null
+        }")
+    
+    # Check for errors
+    local error_message=$(echo "$response" | jq -r '.error.message' 2>/dev/null)
+    if [[ "$error_message" != "null" ]] && [[ -n "$error_message" ]]; then
+        echo "❌ Gemini API error: $error_message" >&2
+        return 1
+    fi
+    
+    # Extract the text response
+    local result=$(echo "$response" | jq -r '.candidates[0].content.parts[0].text' 2>/dev/null)
+    
+    # Check if result is null or empty
+    if [[ "$result" == "null" ]] || [[ -z "$result" ]]; then
+        echo "❌ Gemini returned empty response" >&2
+        return 1
+    fi
+    
+    echo "$result"
 }
