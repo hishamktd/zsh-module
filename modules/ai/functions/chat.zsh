@@ -35,6 +35,14 @@ ai_chat() {
             source "$ZSH_MODULE_DIR/modules/ai/providers/ollama.zsh"
             ai_call_ollama "$prompt" "$config_file"
             ;;
+        "grok")
+            source "$ZSH_MODULE_DIR/modules/ai/providers/grok.zsh"
+            ai_call_grok "$prompt" "$config_file"
+            ;;
+        "deepseek")
+            source "$ZSH_MODULE_DIR/modules/ai/providers/deepseek.zsh"
+            ai_call_deepseek "$prompt" "$config_file"
+            ;;
         *)
             echo "❌ Provider $provider not implemented" >&2
             return 1

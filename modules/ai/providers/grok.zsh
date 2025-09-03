@@ -1,24 +1,24 @@
 #!/usr/bin/env zsh
-# OpenAI Provider for AI Module
+# Grok Provider for AI Module (xAI)
 
-# OpenAI API call
-ai_call_openai() {
+# Grok API call
+ai_call_grok() {
     local prompt="$1"
     local config_file="$2"
     
     if [[ ! -f "$config_file" ]]; then
-        echo "❌ OpenAI configuration not found: $config_file" >&2
+        echo "❌ Grok configuration not found: $config_file" >&2
         return 1
     fi
     
     source "$config_file"
     
     local api_key="${api_key}"
-    local model="${model:-gpt-3.5-turbo}"
-    local base_url="${base_url:-https://api.openai.com/v1}"
+    local model="${model:-grok-beta}"
+    local base_url="${base_url:-https://api.x.ai/v1}"
     
     if [[ -z "$api_key" ]]; then
-        echo "❌ OpenAI API key not configured" >&2
+        echo "❌ Grok API key not configured" >&2
         return 1
     fi
     
@@ -35,7 +35,7 @@ ai_call_openai() {
     # Check for errors
     local error_message=$(echo "$response" | jq -r '.error.message' 2>/dev/null)
     if [[ "$error_message" != "null" ]] && [[ -n "$error_message" ]]; then
-        echo "❌ OpenAI API error: $error_message" >&2
+        echo "❌ Grok API error: $error_message" >&2
         return 1
     fi
     
@@ -44,7 +44,7 @@ ai_call_openai() {
     
     # Check if result is null or empty
     if [[ "$result" == "null" ]] || [[ -z "$result" ]]; then
-        echo "❌ OpenAI returned empty response" >&2
+        echo "❌ Grok returned empty response" >&2
         return 1
     fi
     

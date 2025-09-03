@@ -17,6 +17,8 @@ AI_PROVIDERS=(
     "huggingface" "Hugging Face"
     "cohere" "Cohere"
     "palm" "Google PaLM"
+    "grok" "xAI Grok"
+    "deepseek" "DeepSeek AI"
 )
 
 # Provider configuration requirements
@@ -30,6 +32,8 @@ AI_CONFIG_KEYS=(
     "huggingface" "api_key,model"
     "cohere" "api_key,model"
     "palm" "api_key,model"
+    "grok" "api_key,model,base_url"
+    "deepseek" "api_key,model,base_url"
 )
 
 # Load function modules
