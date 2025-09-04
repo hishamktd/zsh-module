@@ -161,15 +161,12 @@ zmod_update() {
     
     # Clear any conflicting aliases before reloading
     unalias ls 2>/dev/null || true
+    # Prevent alias to function conversion that causes parse errors
+    unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true
     
-    # Reload the shell configuration
-    if [[ -n "$ZSH_VERSION" ]]; then
-        exec zsh
-    elif [[ -n "$BASH_VERSION" ]]; then
-        exec bash
-    else
-        echo "💡 Please restart your shell or run 'source ~/.zshrc' to apply changes"
-    fi
+    # Reload modules directly instead of exec to avoid parse errors
+    source "$ZSH_MODULE_CACHE"
+    echo "✅ Modules reloaded"
 }
 
 # Create new module

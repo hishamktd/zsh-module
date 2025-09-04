@@ -103,9 +103,8 @@ Documentation:
 EOF
             ;;
         *)
-            echo "❌ Unknown command: $command"
-            echo "Run 'ai help' for available commands"
-            return 1
+            # Treat unknown parameters as chat prompts
+            ai_chat "$command $*"
             ;;
     esac
 }

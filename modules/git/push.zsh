@@ -2,9 +2,16 @@
 # Git push commands
 
 # Load utility functions
-local GIT_MODULE_DIR="${0:A:h}"
-source "$GIT_MODULE_DIR/functions/clipboard.zsh"
-source "$GIT_MODULE_DIR/functions/remote.zsh"
+if [[ -n "$ZSH_MODULE_DIR" ]]; then
+    # Use ZSH_MODULE_DIR when available (in modular loading)
+    source "$ZSH_MODULE_DIR/modules/git/functions/clipboard.zsh"
+    source "$ZSH_MODULE_DIR/modules/git/functions/remote.zsh"
+else
+    # Fallback to relative path (for direct sourcing)
+    local GIT_MODULE_DIR="${0:A:h}"
+    source "$GIT_MODULE_DIR/functions/clipboard.zsh"
+    source "$GIT_MODULE_DIR/functions/remote.zsh"
+fi
 
 # Helper function to handle URL copying after push
 handle_post_push_urls() {

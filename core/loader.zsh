@@ -126,6 +126,9 @@ zmod_build_cache() {
     echo "# Auto-generated module cache - $(date)" > "$cache_file"
     echo "# Do not edit manually" >> "$cache_file"
     echo "" >> "$cache_file"
+    echo "# Prevent alias to function conversion that causes parse errors" >> "$cache_file"
+    echo "unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true" >> "$cache_file"
+    echo "" >> "$cache_file"
     
     # Read enabled modules and combine them
     while IFS= read -r module || [[ -n "$module" ]]; do
@@ -243,6 +246,8 @@ zmod_list() {
 # Reload all modules
 zmod_reload() {
     echo "🔄 Reloading modules..."
+    # Prevent alias to function conversion that causes parse errors
+    unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true
     zmod_build_cache
     source "$ZSH_MODULE_CACHE"
     echo "✅ Modules reloaded"
