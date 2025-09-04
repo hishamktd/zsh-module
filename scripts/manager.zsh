@@ -90,6 +90,9 @@ zmod() {
         "upgrade"|"update-framework")
             zmod_upgrade
             ;;
+        "feedback")
+            zmod_feedback "$@"
+            ;;
         *)
             echo "❌ Unknown command: $command"
             echo "Run 'zmod help' for usage information"
@@ -378,6 +381,7 @@ COMMANDS:
     version, -v        Show version information
     changelog, whatsnew [version]  Show changelog (all or specific version)
     upgrade            Upgrade framework and rebuild caches
+    feedback "text"    Add feedback to Feedback.md file
 
 CONFIGURATION KEYS:
     lazy_load          Enable/disable lazy loading (true/false)
@@ -390,6 +394,7 @@ EXAMPLES:
     zmod config set lazy_load true  # Enable lazy loading
     zmod create mymodule         # Create new module
     zmod install                 # Install to .zshrc
+    zmod feedback "need better docs"  # Add feedback
 
 For more information, visit: https://github.com/your-repo/zsh-module
 EOF
@@ -508,6 +513,129 @@ zmod_upgrade() {
     zmod_show_changelog
 }
 
+# Add feedback to Feedback.md file
+zmod_feedback() {
+    local feedback_file="$ZSH_MODULE_DIR/Feedback.md"
+    
+    case "$1" in
+        "list"|"show"|"view")
+            zmod_show_feedback
+            ;;
+        "help"|"-h"|"--help")
+            cat << 'EOF'
+📝 ZSH Module Feedback Commands:
+
+  zmod feedback "text"           Add feedback 
+  zmod feedback list             View all feedback items
+  zmod feedback help             Show this help
+
+Examples:
+  zmod feedback "need faster loading"     # Add feedback
+  zmod feedback list                      # View all feedback
+
+Feedback Format:
+  - [ ] Unchecked = Not addressed yet
+  - [x] Checked   = Addressed/completed
+
+To mark feedback as completed, edit Feedback.md and change [ ] to [x]
+EOF
+            ;;
+        *)
+            # Default action - add feedback
+            local feedback_text="$*"
+            
+            if [[ -z "$feedback_text" ]]; then
+                echo "❌ Please provide feedback text"
+                echo "Usage: zmod feedback \"Your feedback here\""
+                echo ""
+                echo "Examples:"
+                echo "  zmod feedback \"need to improve loading speed\""
+                echo "  zmod feedback \"add more git aliases\""
+                echo "  zmod feedback \"documentation could be clearer\""
+                echo ""
+                echo "Other commands:"
+                echo "  zmod feedback list    # View all feedback"
+                echo "  zmod feedback help    # Show this help"
+                return 1
+            fi
+            zmod_add_feedback "$feedback_text"
+            ;;
+    esac
+}
+
+# Add feedback item
+zmod_add_feedback() {
+    local feedback_text="$*"
+    local feedback_file="$ZSH_MODULE_DIR/Feedback.md"
+    
+    # Create feedback file if it doesn't exist
+    if [[ ! -f "$feedback_file" ]]; then
+        cat > "$feedback_file" << EOF
+# ZSH Module Framework - Feedback
+
+This file contains user feedback and suggestions for improving the framework.
+
+## Feedback Items
+
+EOF
+        echo "📝 Created new feedback file: $feedback_file"
+    fi
+    
+    # Add timestamp and feedback with checkbox
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "- [ ] **$timestamp:** $feedback_text" >> "$feedback_file"
+    
+    echo "✅ Feedback added to $feedback_file"
+    echo "📄 Feedback: \"$feedback_text\""
+    
+    # Show last few feedback items
+    echo ""
+    echo "📋 Recent feedback:"
+    tail -5 "$feedback_file" | grep "^- \[" | sed 's/^- \[ \]/  ☐/' | sed 's/^- \[x\]/  ☑/' || echo "  (No previous feedback found)"
+}
+
+# Show all feedback items
+zmod_show_feedback() {
+    local feedback_file="$ZSH_MODULE_DIR/Feedback.md"
+    
+    if [[ ! -f "$feedback_file" ]]; then
+        echo "📝 No feedback file found."
+        echo "💡 Add feedback with: zmod feedback \"your feedback here\""
+        return 0
+    fi
+    
+    echo "📋 ZSH Module Framework - All Feedback:"
+    echo ""
+    
+    # Count feedback items
+    local total_items=$(grep -c "^- \[" "$feedback_file" 2>/dev/null)
+    [[ -z "$total_items" ]] && total_items=0
+    local completed_items=$(grep -c "^- \[x\]" "$feedback_file" 2>/dev/null)
+    [[ -z "$completed_items" ]] && completed_items=0
+    local pending_items=$((total_items - completed_items))
+    
+    echo "📊 Summary: $total_items total • $completed_items completed • $pending_items pending"
+    echo ""
+    
+    # Show all feedback items with better formatting
+    if [[ $total_items -gt 0 ]]; then
+        echo "📝 Feedback Items:"
+        grep "^- \[" "$feedback_file" | \
+            sed 's/^- \[ \]/☐/' | \
+            sed 's/^- \[x\]/☑/' | \
+            sed 's/\*\*\([^*]*\)\*\*/\1/' | \
+            nl -w3 -s'. '
+    else
+        echo "  (No feedback items found)"
+    fi
+    
+    echo ""
+    echo "💡 Tips:"
+    echo "  • Add feedback: zmod feedback \"your suggestion\""
+    echo "  • Mark as done: Edit $feedback_file and change [ ] to [x]"
+    echo "  • View file: cat $feedback_file"
+}
+
 # Auto-completion for zmod command
 _zmod_completion() {
     local commands=(
@@ -528,6 +656,7 @@ _zmod_completion() {
         'uninstall:Remove from .zshrc'
         'help:Show help message'
         'version:Show version'
+        'feedback:Add feedback to Feedback.md'
     )
     
     if [[ $CURRENT -eq 2 ]]; then
