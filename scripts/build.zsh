@@ -47,6 +47,12 @@ build_eager_cache() {
 # This file contains all enabled modules for fast eager loading
 # Do not edit manually - regenerate with 'zmod build'
 
+# Prevent alias to function conversion that causes parse errors
+unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true
+
+# Clear problematic aliases before loading modules
+unalias ls ll la l st g f grep cd 2>/dev/null || true
+
 EOF
     
     # Add core utilities first

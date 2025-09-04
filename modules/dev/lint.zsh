@@ -42,6 +42,3 @@ lint() {
         echo "✅ Code formatted and linted"
     fi
 }
-
-# Alias
-alias l='lint'

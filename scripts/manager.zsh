@@ -155,12 +155,14 @@ zmod_update() {
     if [[ "$ZSH_MODULE_LAZY_LOAD" == "true" ]]; then
         zmod_build_lazy_registry
     fi
+
+    # Build and reload will be handled by the rebuild cache calls above   
     
     echo "✅ Framework updated"
     echo "🔄 Reloading shell configuration..."
     
     # Clear any conflicting aliases before reloading
-    unalias ls 2>/dev/null || true
+    unalias ls ll la l st g f grep cd 2>/dev/null || true
     # Prevent alias to function conversion that causes parse errors
     unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true
     

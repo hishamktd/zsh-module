@@ -39,6 +39,3 @@ install() {
         return 1
     fi
 }
-
-# Alias
-alias i='install'

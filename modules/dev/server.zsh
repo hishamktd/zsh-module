@@ -71,6 +71,3 @@ serve() {
         return 1
     fi
 }
-
-# Alias
-alias s='serve'

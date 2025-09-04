@@ -28,6 +28,3 @@ test() {
         return 1
     fi
 }
-
-# Alias
-alias t='test'

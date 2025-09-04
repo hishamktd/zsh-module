@@ -19,20 +19,12 @@ ai_commit_message() {
     
     echo "🤖 Generating commit message using $provider..." >&2
     
-    # Create prompt for AI
-    local prompt="Analyze the following git diff and generate a concise, conventional commit message. 
-
-Use conventional commit format: type(scope): description
-Types: feat, fix, docs, style, refactor, test, chore
-Keep description under 72 characters.
-
-Staged changes:
-$staged_status
-
-Git diff:
-$staged_diff
-
-Generate only the commit message, no explanation:"
+    # Get configurable prompt template
+    local prompt_template=$(ai_get_commit_prompt)
+    
+    # Replace placeholders in the prompt template
+    local prompt="${prompt_template/\{STAGED_STATUS\}/$staged_status}"
+    prompt="${prompt/\{STAGED_DIFF\}/$staged_diff}"
     
     local result=$(ai_chat "$prompt" "$provider")
     

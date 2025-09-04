@@ -24,6 +24,3 @@ build() {
         return 1
     fi
 }
-
-# Alias
-alias b='build'

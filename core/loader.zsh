@@ -126,9 +126,6 @@ zmod_build_cache() {
     echo "# Auto-generated module cache - $(date)" > "$cache_file"
     echo "# Do not edit manually" >> "$cache_file"
     echo "" >> "$cache_file"
-    echo "# Prevent alias to function conversion that causes parse errors" >> "$cache_file"
-    echo "unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true" >> "$cache_file"
-    echo "" >> "$cache_file"
     
     # Read enabled modules and combine them
     while IFS= read -r module || [[ -n "$module" ]]; do
@@ -163,7 +160,31 @@ zmod_build_cache() {
         fi
     done < "$ZSH_MODULE_CONFIG"
     
+    
     echo "✅ Module cache built: $cache_file"
+}
+
+# Initialize ZSH Module Framework
+zmod_init() {
+    # Disable alias to function conversion immediately
+    unsetopt ALIASES_TO_FUNCTIONS 2>/dev/null || true
+    
+    local user_config="$ZSH_MODULE_DIR/config/zshrc.conf" 
+    [[ -f "$user_config" ]] && source "$user_config"
+    
+    if [[ ! -f "$ZSH_MODULE_CONFIG" ]]; then
+        mkdir -p "$(dirname "$ZSH_MODULE_CONFIG")"
+        echo "# Enabled modules - one per line" > "$ZSH_MODULE_CONFIG"
+        echo "git" >> "$ZSH_MODULE_CONFIG"
+        echo "dev" >> "$ZSH_MODULE_CONFIG"
+        echo "system" >> "$ZSH_MODULE_CONFIG"
+        echo "ai" >> "$ZSH_MODULE_CONFIG"
+    fi
+    
+    # Clear problematic aliases before loading
+    unalias ls ll la l st g f grep cd 2>/dev/null || true
+    
+    zmod_load_enabled
 }
 
 # Check if module is enabled
