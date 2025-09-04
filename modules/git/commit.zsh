@@ -33,7 +33,7 @@ commit() {
     # Check if there are staged changes
     local staged_status=$(git diff --cached --name-only)
     if [[ -z "$staged_status" ]]; then
-        echo "$(zmod_color yellow 'No staged changes found.')"
+        echo "No staged changes found."
         echo "Stage files first with: git add <files>"
         echo "Or stage all changes with: git add ."
         return 1
@@ -43,11 +43,11 @@ commit() {
     if [[ "$use_ai" == true ]] && [[ -z "$message" ]]; then
         message=$(ai_commit_message)
         if [[ $? -ne 0 ]] || [[ -z "$message" ]]; then
-            echo "$(zmod_color red 'Failed to generate AI commit message')"
+            echo "Failed to generate AI commit message"
             echo -n "Please enter a commit message manually: "
             read message
         else
-            echo "$(zmod_color green '✨ Generated commit message:') $message"
+            echo "✨ Generated commit message: $message"
         fi
     fi
     
