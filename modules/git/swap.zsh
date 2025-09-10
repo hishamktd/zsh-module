@@ -51,10 +51,18 @@ swap() {
             echo "$(zmod_color yellow "📥 Creating local branch from origin/$branch_name")"
             git switch -c "$branch_name" "origin/$branch_name"
         else
-            echo "❌ Branch '$branch_name' not found"
-            echo "Available branches:"
-            git branch --format="  %(refname:short)" | head -5
-            return 1
+            echo "$(zmod_color yellow "⚠️  Branch '$branch_name' does not exist.")"
+            echo -n "$(zmod_color yellow "Do you want to create it? (Y - default/n): ")"
+            read confirmation
+            if [[ -z "$confirmation" || "$confirmation" =~ ^[Yy]([Ee][Ss])?$ ]]; then
+                echo "$(zmod_color green "🌱 Creating and switching to branch '$branch_name'...")"
+                git switch -c "$branch_name"
+            else
+                echo "$(zmod_color red "❌ Operation canceled.")"
+                echo "Available branches:"
+                git branch --format="  %(refname:short)" | head -5
+                return 1
+            fi
         fi
     else
         git switch "$branch_name"
